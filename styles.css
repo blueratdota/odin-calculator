@@ -10,3 +10,46 @@
     height: 100vh;
     background-image: linear-gradient(to left, rgba(158, 232, 255, 0.74), rgba(139, 151, 255, 0.747));
 }
+
+main{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.cal-body{
+    min-width: 400px;
+    width: 400px;
+    height: 550px;
+    background-color: rgba(100, 100, 100, 0.76);
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 30px;
+    margin-top: 100px;
+}
+
+.screen{
+    width: 325px;
+    height: 150px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    margin: 35px auto;
+    background-color: rgb(235, 235, 235);
+}
+
+.button-grid{
+    margin: 35px auto;
+    width: 325px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.button-grid button{
+    flex-grow: 1;
+    border: 1px solid grey;
+    border-radius: 5px;
+    width: 50px;
+    height: 55px;
+    font-size: 20px
+}
