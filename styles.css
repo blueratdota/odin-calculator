@@ -34,6 +34,18 @@ main{
     border-radius: 10px;
     margin: 35px auto;
     background-color: rgb(235, 235, 235);
+    text-align: end;
+}
+
+.screen div{
+    padding: 15px 8px 15px 8px;
+}
+
+#top-row{
+    font-size: 30px;
+}
+#bot-row{
+    font-size: 20px;
 }
 
 .button-grid{
