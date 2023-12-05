@@ -6,6 +6,7 @@ const btnOperator = document.querySelectorAll('.operator')
 const btnDel = document.querySelector('.delete')
 const btnEqual = document.querySelector('.equal')
 const btnDecimal = document.querySelector('.decimal')
+const btnClear = document.querySelector('.clear')
 
 // screen
 const topRow = document.querySelector('#top-row')
@@ -38,7 +39,6 @@ for (let i=0; i<btnDigit.length; i++){
 
 for (let i=0; i<btnOperator.length; i++){
     btnOperator[i].addEventListener('click',function(e){
-        // console.log(btnOperator[i].textContent);
         if(tempSecondNum == ""){
             if (inputType == 'firstNumber'){
                 inputType = 'secondNumber'
@@ -65,7 +65,12 @@ for (let i=0; i<btnOperator.length; i++){
     })
 }
 
+btnClear.addEventListener('click',function(){
+    clearAll()
+})
+
 btnEqual.addEventListener('click',function(){
+    let tempRes = ''
     if (inputType == 'secondNumber'){
         perfOperator()
         prevResult = currentResult
@@ -74,9 +79,17 @@ btnEqual.addEventListener('click',function(){
         setOperator.textContent = ''
         tempSecondNum = []
         updateScreen()
+        tempRes = prevResult
+        if(firstNumber.textContent == 'NaN'){
+            clearAll()
+            topRow.textContent = 'MATH ERROR'
+        }
     }
     tempFirstNum = []
     inputType = 'firstNumber'
+
+    // console.log(`temp second == ${tempSecondNum.join('')}`);
+    // console.log(`temp first == ${tempFirstNum.join('')}`);
     
 })
 
@@ -97,9 +110,25 @@ btnDecimal.addEventListener('click',function(){
 })
 
 btnDel.addEventListener('click',function(){
-    // if wala pa 2nd number, operator delete
-    // if first number pa lang, first number lang mag delete
-    // then if naa second number ,sa 2nd number mag delete
+    if (inputType == 'firstNumber'){
+        tempFirstNum.pop()
+        firstNumber.textContent = tempFirstNum.join('')
+    }
+    if (inputType == 'secondNumber' && tempSecondNum == ""){
+        setOperator.textContent = ''
+        if(setOperator.textContent == '' && tempSecondNum == ""){
+            inputType = 'firstNumber'
+        }
+    }
+    if (inputType == 'secondNumber'){
+        tempSecondNum.pop()
+        secondNumber.textContent = tempSecondNum.join('')
+    }
+
+    // console.log(`temp second == ${tempSecondNum.join('')}`);
+    // console.log(`temp first == ${tempFirstNum.join('')}`);
+    // console.log(inputType);
+
 })
 
 
@@ -118,7 +147,16 @@ function perfOperator(){
     }
 }
 
-
+function clearAll(){
+    tempFirstNum = []
+    tempSecondNum = []
+    currentResult = ''
+    inputType = 'firstNumber'
+    firstNumber.textContent = ''
+    secondNumber.textContent = ''
+    setOperator.textContent = ''
+    topRow.textContent = ''
+}
 
 function updateScreen(){
     topRow.textContent = firstNumber.textContent

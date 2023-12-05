@@ -35,10 +35,13 @@ main{
     margin: 35px auto;
     background-color: rgb(235, 235, 235);
     text-align: end;
+
 }
 
 .screen div{
     padding: 15px 8px 15px 8px;
+    /* border: 1px solid red; */
+    height: 73px;
 }
 
 #top-row{
